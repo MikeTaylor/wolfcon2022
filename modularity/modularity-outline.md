@@ -2,13 +2,13 @@
 
 <!-- md2toc -l 2 modularity-outline.md -->
 * [Abstract](#abstract)
-* [Part 1. The past](#part-1-the-past)
+* [Part 1. The past **(10 minutes)**](#part-1-the-past-10-minutes)
     * [Introduction: FOLIO was designed to be modular](#introduction-folio-was-designed-to-be-modular)
     * [Structure: system diagram with apps made of UI and backend modules](#structure-system-diagram-with-apps-made-of-ui-and-backend-modules)
-* [Part 2. The present](#part-2-the-present)
+* [Part 2. The present **(5 minutes)**](#part-2-the-present-5-minutes)
     * [Organizational structure: platform-complete and flower releases](#organizational-structure-platform-complete-and-flower-releases)
     * [Result: a modular monolith](#result-a-modular-monolith)
-* [Part 3. The future](#part-3-the-future)
+* [Part 3. The future **(40 minutes)**](#part-3-the-future-40-minutes)
     * [Smaller, lighter base platform](#smaller-lighter-base-platform)
     * [Remove requirement for UI modules to be in `@folio` space](#remove-requirement-for-ui-modules-to-be-in-folio-space)
     * [A way of packaging apps](#a-way-of-packaging-apps)
@@ -18,6 +18,7 @@
     * [Installing apps](#installing-apps)
     * [The Okapi console](#the-okapi-console)
     * [Towards an app-store](#towards-an-app-store)
+* [Part 4. The purpose **(5 minutes)**](#part-4-the-purpose-5-minutes)
 
 
 ## Abstract
@@ -32,7 +33,7 @@ This is a riff on the abstract of my recent paper, [_Modularity in FOLIO: Princi
 
 
 
-## Part 1. The past
+## Part 1. The past **(10 minutes)**
 
 
 ### Introduction: FOLIO was designed to be modular
@@ -46,7 +47,7 @@ XXX
 
 
 
-## Part 2. The present
+## Part 2. The present **(5 minutes)**
 
 
 ### Organizational structure: platform-complete and flower releases
@@ -60,14 +61,14 @@ XXX
 
 
 
-## Part 3. The future
+## Part 3. The future **(40 minutes)**
 
 
 ### Smaller, lighter base platform
 
 XXX platform-core
 
-XXX Stripes dependence on
+XXX Stripes dependence on service points
 
 
 ### Remove requirement for UI modules to be in `@folio` space
@@ -95,6 +96,9 @@ XXX Our own CI choices; yours may be different
 
 XXX We don't want a parallel Index Data monolith, but an ecosystem
 
+XXX GitHub repos of FAM files
+
+
 ### Distribution of work across multiple roles
 
 XXX developer, packager, FOLIO admin, tenant admin
@@ -115,5 +119,18 @@ XXX Currently hidden in Developer Settings
 ### Towards an app-store
 
 XXX mod-app-manager
+
+
+
+## Part 4. The purpose **(5 minutes)**
+
+XXX We want _everyone_ to be able to contribute
+
+XXX No single chokepoint
+
+XXX A functioning ecosystem with competition
+
+XXX We want FOLIO to outlive EBSCO and Index Data
+
 
 
