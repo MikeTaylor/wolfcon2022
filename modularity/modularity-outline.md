@@ -38,7 +38,7 @@ This is a riff on the abstract of my recent paper, [_Modularity in FOLIO: Princi
 
 ### Introduction: FOLIO was designed to be modular
 
-XXX
+XXX discuss use of interfaces to make modules plug-compatible
 
 
 ### Structure: system diagram with apps made of UI and backend modules
