@@ -1,5 +1,8 @@
 # Outline for Modularity talk
 
+Mike Taylor <mike@indexdata.com>,
+Index Data.
+
 <!-- md2toc -l 2 modularity-outline.md -->
 * [Abstract](#abstract)
 * [Part 1. The past **(10 minutes)**](#part-1-the-past-10-minutes)
@@ -27,9 +30,7 @@ From [the conference website](https://wolfcon2022.sched.com/event/14ANV/folio-mo
 
 > From the earliest genesis of FOLIO it was conceived as a modular system, in which any installation can use any set of modules. For good and practical reasons, the modules included in the flower releases are carefully audited and tested, but this has the side-effect of making it awkward to develop or deliver modules from outside of the curated set that make up those releases. The FOLIO architecture already has the necessary facilities to allow the inclusion of modules from multiple sources, much as Linux-based operating systems can install packages from multiple sources. In this session, we will survey the architectural underpinnings that enable a practical approach to modularity, and share our experiences in this area.
 
-This is a riff on the abstract of my recent paper, [_Modularity in FOLIO: Principles, Techniques and Tools_](https://journal.calaijol.org/index.php/ijol/article/view/208) (_International Journal of Librarianship_ 6(2), 2021, doi:10.23974/ijol.2021.vol6.2.208):
-
-> From its earliest inception, FOLIO was conceived not as an ILS (Integrated Library System), but as a true Services Platform, composed of many independent but interdependent modules, and forming a foundation on which an ILS or other library software could be built out of relevant modules. This vision of modularity is crucial to FOLIO’s appeal to the library community, because it lowers the bar to participation: individual libraries may create modules that meet their needs, or hire developers to do so, or contribute to funding modules that will be of use to a broader community — all without needing “permission” from a central authority. The technical design of FOLIO is deeply influenced by the requirements of modularity, with the establishment of standard specifications and an emphasis on machine-readable API descriptions. While FOLIO’s modular design has proved advantageous, it also introduces difficulties, including cross-module searching and data consistency. Some conventions have been established to address these difficulties, and others are in the process of crystallizing. As the ILS built on FOLIO’s platform grows and matures, and as other application suites are built on it, it remains crucial to resist the shortcuts that monolithic systems can benefit from, and retain the vision of modularity that has so successfully brought FOLIO this far.
+(This is a riff on the abstract of my recent paper, [_Modularity in FOLIO: Principles, Techniques and Tools_](https://journal.calaijol.org/index.php/ijol/article/view/208), _International Journal of Librarianship_ 6(2), 2021, doi:10.23974/ijol.2021.vol6.2.208)
 
 
 
@@ -38,12 +39,23 @@ This is a riff on the abstract of my recent paper, [_Modularity in FOLIO: Princi
 
 ### Introduction: FOLIO was designed to be modular
 
-XXX discuss use of interfaces to make modules plug-compatible
+* A lot of the early ideas were thrashed out in Sint Maarten in December 2015
+* It's frightening to realise that's nearly seven years ago
+* From the start we had the notion of separate modules, all fronted by Okapi
+* (This is not "microservices" where each service has its own API.)
+* From the start, dependencies were on interface, not implementation
+* Interface dependency allows completing implementations of the same interface
 
 
 ### Structure: system diagram with apps made of UI and backend modules
 
-XXX
+* You can think of a FOLIO system in three horizontal slices: Stripes-based UI, Okapi and modules
+* Or you can think of it in many vertical slices, one per app (Users, Inventory, Settings, etc.)
+* Most vertical-slice apps consist of a UI module and a backend module (e.g. `ui-users` + `mod-users`)
+* Some are bigger and involve multiple UI or backend modules (e.g. ERM, ReShare)
+* (According to [documentation](https://lotus.docs.folio.org/docs/erm/), ERM consists of Agreements, eHoldings, eUsage, Licenses, Local KB Admin and ERM Comparisons)
+
+**_[Diagrams here]_**
 
 
 
@@ -52,7 +64,8 @@ XXX
 
 ### Organizational structure: platform-complete and flower releases
 
-XXX
+* So we have all this flexibility where we can run any modules we want
+* But we never do!
 
 
 ### Result: a modular monolith
@@ -65,6 +78,8 @@ XXX
 
 
 ### Smaller, lighter base platform
+
+XXX We think of wanting to _add_ modules, but we may also want to pare down to a lean subset.
 
 XXX platform-core
 
