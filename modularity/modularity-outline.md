@@ -89,11 +89,13 @@ This situation has been difficult to break out of because:
 
 ### Smaller, lighter base platform
 
-XXX We think of wanting to _add_ modules, but we may also want to pare down to a lean subset.
-
-XXX platform-core
-
-XXX Stripes dependence on service points
+* We think of wanting to _add_ modules, but we may also want to pare down to a lean subset
+* We might be able to make lean, slick checkin/checkout apps, for example
+* At present the only platform supported by the OLF is [`platform-complete`](https://github.com/folio-org/platform-complete/), which is what we use to build https://folio-snapshot.dev.folio.org/
+* This has 140 backend and edge modules, 29 UI apps, 30 UI settings modules, and 18 UI plugins
+* We are working on a much smaller `platform-core`
+* Difficult because Stripes logs in with `mod-users-bl` instead of `mod-login`, and that pulls in many other modules
+* We also need to remove the concept of "service points" from being hardwired into Stripes
 
 
 ### Remove requirement for UI modules to be in `@folio` space
