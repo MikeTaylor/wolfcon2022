@@ -17,10 +17,10 @@ Index Data.
     * [A way of packaging apps](#a-way-of-packaging-apps)
     * [A way of certifying apps](#a-way-of-certifying-apps)
     * [A place to upload apps](#a-place-to-upload-apps)
+    * [Towards an app-store](#towards-an-app-store)
     * [Distribution of work across multiple roles](#distribution-of-work-across-multiple-roles)
     * [Installing apps](#installing-apps)
     * [The Okapi console](#the-okapi-console)
-    * [Towards an app-store](#towards-an-app-store)
 * [Part 4. The purpose **(5 minutes)**](#part-4-the-purpose-5-minutes)
 
 
@@ -55,7 +55,7 @@ From [the conference website](https://wolfcon2022.sched.com/event/14ANV/folio-mo
 * Some are bigger and involve multiple UI or backend modules (e.g. ERM, ReShare)
 * (According to [documentation](https://lotus.docs.folio.org/docs/erm/), ERM consists of Agreements, eHoldings, eUsage, Licenses, Local KB Admin and ERM Comparisons)
 
-**_[Diagrams here]_**
+> **_[[Diagrams here]](https://docs.google.com/presentation/d/1tBI8urMK-MU6w_bjO-cudSo3KySBHuTPjCVB_sP6ECU/edit#slide=id.g14587eada5c_0_82)_**
 
 
 
@@ -64,13 +64,23 @@ From [the conference website](https://wolfcon2022.sched.com/event/14ANV/folio-mo
 
 ### Organizational structure: platform-complete and flower releases
 
-* So we have all this flexibility where we can run any modules we want
-* But we never do!
+* We have all this flexibility where we can run any modules we want
+* But we need flower releases because they are stable, tested and reliable
+* But the result is that we usually have _all_ and _only_ the core set of modules
+* Where is the flourishing ecosystem of competing apps from different providers?
 
 
 ### Result: a modular monolith
 
-XXX
+This situation has been difficult to break out of because:
+* The base platform is too big to build custom FOLIO subsets on
+* There are technical difficulties in adding apps not in the core
+* There is no way to package modules together into an app
+* There is no way to certify the origin of an app, or properties such as internationalization.
+* There are no established places to upload apps, or download them from
+* There is no way to discover apps that do exist
+* Installing apps (UI and backend modules) is cumbersome
+* There is no Okapi Console that can be used to enable/disable modules, etc.
 
 
 
@@ -114,6 +124,11 @@ XXX We don't want a parallel Index Data monolith, but an ecosystem
 XXX GitHub repos of FAM files
 
 
+### Towards an app-store
+
+XXX mod-app-manager
+
+
 ### Distribution of work across multiple roles
 
 XXX developer, packager, FOLIO admin, tenant admin
@@ -129,11 +144,6 @@ XXX deployment plugins
 ### The Okapi console
 
 XXX Currently hidden in Developer Settings
-
-
-### Towards an app-store
-
-XXX mod-app-manager
 
 
 
