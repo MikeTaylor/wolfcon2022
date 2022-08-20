@@ -98,19 +98,70 @@ This situation has been difficult to break out of because:
 * We also need to remove the concept of "service points" from being hardwired into Stripes
 
 
-### Remove requirement for UI modules to be in `@folio` space
+### Remove unexamined assumptions in the code
 
-XXX Michal's work
+* e.g. Michal's work to support UI modules not in the `@folio` namespace
 
 
 ### A way of packaging apps
 
-XXX FAM format, part 1
+* FAM format (FOLIO Application Metadata)
+* JSON-based format that points to multiple UI and backend packages:
+  * Machine-readable fields (`name`, `version`)
+  * Human-readable fields (`displayName`, `description`)
+  * Array of installable `elements`
+* Example:
+```
+{
+  "name": "harvester-admin",
+  "displayName": "Harvester admin",
+  "version": "0.0.1",
+  "description": "Admin console for the Index Data Harvester",
+  "elements": [
+    {
+      "type": "ui",
+      "url": "https://repository.folio.org/repository/npm-folio/@indexdata/harvester-admin",
+      "descriptor": "https://registry.folio-dev.indexdata.com/_/proxy/modules/indexdata_harvester-admin-0.1.0",
+      "required": true
+    },
+    {
+      "type": "backend",
+      "url": "ghcr.io/indexdata/mod-harvester-admin:v0.1.0-SNAPSHOT.7",
+      "descriptor": "https://registry.folio-dev.indexdata.com/_/proxy/modules/mod-harvester-admin-0.1.0-SNAPSHOT",
+      "required": true
+    }
+  ]
+}
+```
+* Not yet supported: internationalization of human-readable strings
 
 
 ### A way of certifying apps
 
-XXX FAM format, part 2
+* We need to know who packed the app is taking resposibility for it
+* We also want to know who has made claims about its accessibility, security, etc.
+* Each FAM carries an array of signed certifications:
+  * `type` says what is being asserted
+  * `certifier` is the top-level domain of the entity asserting it
+  * `signature` is a digest of the FAM file signed with the certifier's private key (and so verifiable with the corresponding public key)
+* Example:
+```
+{
+  ...,
+  "certified": [
+    {
+      "type": "published",
+      "certifier": "indexdata.com",
+      "signature": "1a2b3c4d5e6f7g8h9i0j"
+    },
+    {
+      "type": "ux",
+      "certifier": "samhaeng.com",
+      "signature": "1234567890abcdefghij"
+    }
+  ]
+}
+```
 
 
 ### A place to upload apps
