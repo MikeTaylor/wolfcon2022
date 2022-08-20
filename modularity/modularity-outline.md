@@ -166,49 +166,78 @@ This situation has been difficult to break out of because:
 
 ### A place to upload apps
 
-XXX Module descriptor registry
+An app consists of several parts:
+* The FAM file
+* Module descriptors for UI and backend modules
+* NPM packages for UI modules
+* Docker containers for backend modules
 
-XXX Docker Hub, GitHub Packages, NPM, etc.
+Where will we keep all these things?
 
-XXX Our own CI choices; yours may be different
+* FAM files in GitHub repositories, e.g. https://github.com/MikeTaylor/example-folio-app-source
+* Module descriptors in publicly accessible Okapi instances:
+  * The FOLIO project's registry at http://folio-registry.aws.indexdata.com:80 XXX outdated
+  * Index Data's registry at https://registry.folio-dev.indexdata.com
+  * Any other registry that anyone stands up
+* NPM packages in any NPM registry:
+  * The FOLIO NPM registry (where core modules live)
+  * The global NPM registry
+  * Any other registry that anyone stands up
+* Docker containers in any Docker registry:
+  * DockerHub
+  * FOLIO's DockerHub mirror
+  * GitHub packages at https://ghcr.io
+  * Any other registry that anyone stands up
 
-XXX We don't want a parallel Index Data monolith, but an ecosystem
-
-XXX GitHub repos of FAM files
+* We at Index Data have made our own choices; yours may be different, and that's fine.
+* We don't want an Index Data monolith, parallel with the existing FOLIO monolith
+* We want an ecosystem populated by many actors
 
 
 ### Towards an app-store
 
-XXX mod-app-manager
-
-
-### Distribution of work across multiple roles
-
-XXX developer, packager, FOLIO admin, tenant admin
+* Anyone can publish FAM files, but how can they be discovered?
+* `mod-app-manager` exists as a prototype
+* Its configuration stores details about GitHub repositories
+* It can return all the FAM files from all those repositories
+* We have a very primitive UI in a branch of the Developer Console
+* This is the beginning of an app-store that can be used for:
+  * Platform administrators to add apps to platforms and deploy them
+  * Tenant administrators to enable and disable apps for their tenant
+  * Users to browse what exists and make installation requests
 
 
 ### Installing apps
 
-XXX `add-app-to-platform`
-
-XXX deployment plugins
+* We have a script, `add-app-to-platform`
+  * It reads a FAM file
+  * It inserts the module descriptors of all elements
+  * It deploys backend modules
+  * (It does _not_ yet build and publish new Stripes bundles)
+* Deployment is different for different vendors
+  * `add-app-to-platform` uses a simple deployment-plugin API
+  * There is currently an `okapi` plugin that uses Okapi's own deployment mechanism
+  * We plan a Kubernetes plugin
+  * Others are possible, e.g. DockerSwarm
+* We want to build a FOLIO module that can do these things
+* Then we can make a UI to allow all this to be done within FOLIO itself
 
 
 ### The Okapi console
 
-XXX Currently hidden in Developer Settings
-
+* What would an admin UI look like?
+* We have prototyped an Okapi Console
+* It is currently hidden in Developer Settings
 
 
 ## Part 4. The purpose **(5 minutes)**
 
-XXX We want _everyone_ to be able to contribute
-
-XXX No single chokepoint
-
-XXX A functioning ecosystem with competition
-
-XXX We want FOLIO to outlive EBSCO and Index Data
+* We want _everyone_ to be able to contribute -- not just a few anointed organizations
+* We want the barrier-to-entry to be very low, while retaining quality stamps
+* We want no single chokepoint to making apps available in FOLIO
+* We want work to be distributed work across multiple roles: developer, packager, certifier, platform admin, tenant admin
+* We want a functioning ecosystem with competition
+* We want FOLIO to outlive EBSCO and Index Data
 
 
 
