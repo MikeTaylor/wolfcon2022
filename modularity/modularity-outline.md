@@ -137,7 +137,7 @@ This situation has been difficult to break out of because:
 
 ### A way of certifying apps
 
-* We need to know who packed the app is taking resposibility for it
+* We need to know who published the app and is taking responsibility for it
 * We also want to know who has made claims about its accessibility, security, etc.
 * Each FAM carries an array of signed certifications:
   * `type` says what is being asserted
